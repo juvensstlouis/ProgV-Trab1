@@ -12,35 +12,36 @@
         </f:metadata>
 
         <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/form.css" />
     </h:head>
     <h:body>
         <h:form>
             <h:messages></h:messages>
 
-            <h:outputLabel>Descrição</h:outputLabel>
-            <h:inputText value="#{beanProduto.descricao}" />
+            <h:outputLabel>Descrição</h:outputLabel><br />
+            <h:inputText value="#{beanProduto.descricao}" /><br />
 
-            <h:outputLabel>Categoria</h:outputLabel>
+            <h:outputLabel>Categoria</h:outputLabel><br />
             <h:selectOneMenu value="#{beanProduto.idcategoria}">
                 <f:selectItems value="#{beanCategoria.consultarTudo()}" 
                                var="item" itemLabel="#{item.descricao}" itemValue="#{item.idcategoria}" />
-            </h:selectOneMenu>
+            </h:selectOneMenu><br />
 
-            <h:outputLabel>Preço</h:outputLabel>
+            <h:outputLabel>Preço</h:outputLabel><br />
             <h:inputText value="#{beanProduto.preco}">
                 <f:convertNumber minFractionDigits="2"/>
-            </h:inputText>
+            </h:inputText><br />
 
-            <h:outputLabel>Quantidade em estoque</h:outputLabel>
+            <h:outputLabel>Quantidade em estoque</h:outputLabel><br />
             <h:inputText value="#{beanProduto.estoque}">
                 <f:convertNumber />
-            </h:inputText>
+            </h:inputText><br />
 
-            <h:outputLabel>Observação</h:outputLabel>
-            <h:inputTextarea value="#{beanProduto.observacao}" />
+            <h:outputLabel>Observação</h:outputLabel><br />
+            <h:inputTextarea value="#{beanProduto.observacao}" /><br />
 
-            <h:commandButton value = "Salvar" action="#{beanProduto.salvar()}" /> 
-            <h:commandButton value = "Cancelar" action = "index?faces-redirect=true" /> 
+            <h:commandButton class="botaoComBorda botaoAzul" value = "Salvar" action="#{beanProduto.salvar()}" /> 
+            <h:commandButton class="botaoComBorda botaoVermelho" value = "Cancelar" action = "index?faces-redirect=true" /> 
         </h:form>
     </h:body>
 </html>

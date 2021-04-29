@@ -1,0 +1,33 @@
+input[type=text], select {
+    height: 30px;
+}
+
+input[type=text], textarea, select {
+    border: none;
+    border-radius: 9px;
+    margin: 7px 0;
+    padding: 4px 6px;
+    width: 400px;
+}
+
+textarea {
+    height: 70px;
+    resize: none;
+}
+
+input[type=submit].botaoComBorda {
+    border: none;
+    border-radius: 12px;
+    width: 100px;
+    height: 25px;
+}
+
+input[type=submit].botaoVermelho {
+    background-color: red;
+    color: white;
+}
+
+input[type=submit].botaoAzul {
+    background-color: blue;
+    color: red;
+}
