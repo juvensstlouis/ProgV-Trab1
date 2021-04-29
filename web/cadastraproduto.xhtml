@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de produto</title>
+
+        <f:metadata>
+            <f:viewParam name="idproduto" value="#{beanProduto.idproduto}" />
+            <f:viewAction action="#{beanProduto.carregarCampos()}" />
+        </f:metadata>
+
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:messages></h:messages>
+
+            <h:outputLabel>Descrição</h:outputLabel>
+            <h:inputText value="#{beanProduto.descricao}" />
+
+            <h:outputLabel>Categoria</h:outputLabel>
+            <h:selectOneMenu value="#{beanProduto.idcategoria}">
+                <f:selectItems value="#{beanCategoria.consultarTudo()}" 
+                               var="item" itemLabel="#{item.descricao}" itemValue="#{item.idcategoria}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel>Preço</h:outputLabel>
+            <h:inputText value="#{beanProduto.preco}">
+                <f:convertNumber minFractionDigits="2"/>
+            </h:inputText>
+
+            <h:outputLabel>Quantidade em estoque</h:outputLabel>
+            <h:inputText value="#{beanProduto.estoque}">
+                <f:convertNumber />
+            </h:inputText>
+
+            <h:outputLabel>Observação</h:outputLabel>
+            <h:inputTextarea value="#{beanProduto.observacao}" />
+
+            <h:commandButton value = "Salvar" action="#{beanProduto.salvar()}" /> 
+            <h:commandButton value = "Cancelar" action = "index?faces-redirect=true" /> 
+        </h:form>
+    </h:body>
+</html>
+
