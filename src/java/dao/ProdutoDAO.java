@@ -66,7 +66,7 @@ public class ProdutoDAO {
     public static List<Produto> consultarPorNome(String nome) {
         List<Produto> lista = new ArrayList<>();
         try {
-            String sql = "select * from produto where descricao like '%" + nome + "%'";
+            String sql = "select * from produto where upper(descricao) like upper('%" + nome + "%')";
 
             Connection con = ConexaoBD.conectar();
 
@@ -94,7 +94,7 @@ public class ProdutoDAO {
         List<Produto> lista = new ArrayList<>();
         try {
             String sql = "select * from produto"
-                    + " where descricao like '%" + nome + "%'"
+                    + " where upper(descricao) like upper('%" + nome + "%')"
                     + " and idcategoria = " + idcategoria;
 
             Connection con = ConexaoBD.conectar();
