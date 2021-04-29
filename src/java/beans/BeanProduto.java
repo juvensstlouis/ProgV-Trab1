@@ -8,6 +8,7 @@ package beans;
 import dao.ProdutoDAO;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -84,12 +85,12 @@ public class BeanProduto implements Serializable {
         return "";
     }
 
+    @PostConstruct
     public void pesquisar() {
         if (isFiltrarCategoria && idcategoria > 0) {
             lista = ProdutoDAO.consultarPorNomeECategoria(filtro, idcategoria);
         } else {
             lista = ProdutoDAO.consultarPorNome(filtro);
-            System.out.println("Filtro: " + filtro);
         }
     }
 
