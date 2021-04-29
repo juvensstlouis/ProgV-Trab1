@@ -14,12 +14,14 @@
                 <h:outputLabel>Informe parte do nome do produto</h:outputLabel>
                 <h:inputText value="#{beanProduto.filtro}" />
 
-                <h:button value="Pesquisar" onclick="#{beanProduto.pesquisar()}" />
+                <h:commandButton value="Pesquisar" action="#{beanProduto.pesquisar()}" />
 
-                <h:selectBooleanCheckbox value="#{beanProduto.isFiltrarCategoria}" />
+                <h:selectBooleanCheckbox id="filtrarPorCategoria" value="#{beanProduto.isFiltrarCategoria}">
+                    <f:ajax execute="filtrarPorCategoria" render="escolherCategoria" event="change" />
+                </h:selectBooleanCheckbox>
                 <h:outputLabel>Filtrar por categoria?</h:outputLabel>
 
-                <h:selectOneMenu value="#{beanProduto.idcategoria}" disabled="#{!beanProduto.isFiltrarCategoria}">
+                <h:selectOneMenu id="escolherCategoria" value="#{beanProduto.idcategoria}" disabled="#{!beanProduto.isFiltrarCategoria}">
                     <f:selectItems value="#{beanCategoria.consultarTudo()}" 
                                    var="item" itemLabel="#{item.descricao}" itemValue="#{item.idcategoria}" />
                 </h:selectOneMenu>
